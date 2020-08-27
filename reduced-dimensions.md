@@ -1,42 +1,43 @@
+---
+bibliography: ref.bib
+---
+
 # Plotting reduced dimensions
 
+<script>
+document.addEventListener("click", function (event) {
+    if (event.target.classList.contains("rebook-collapse")) {
+        event.target.classList.toggle("active");
+        var content = event.target.nextElementSibling;
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+    }
+})
+</script>
 
-```
-## <script>
-## document.addEventListener("click", function (event) {
-##     if (event.target.classList.contains("rebook-collapse")) {
-##         event.target.classList.toggle("active");
-##         var content = event.target.nextElementSibling;
-##         if (content.style.display === "block") {
-##             content.style.display = "none";
-##         } else {
-##             content.style.display = "block";
-##         }
-##     }
-## })
-## </script>
-## 
-## <style>
-## .rebook-collapse {
-##   background-color: #eee;
-##   color: #444;
-##   cursor: pointer;
-##   padding: 18px;
-##   width: 100%;
-##   border: none;
-##   text-align: left;
-##   outline: none;
-##   font-size: 15px;
-## }
-## 
-## .rebook-content {
-##   padding: 0 18px;
-##   display: none;
-##   overflow: hidden;
-##   background-color: #f1f1f1;
-## }
-## </style>
-```
+<style>
+.rebook-collapse {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.rebook-content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+</style>
 
 ## Foreword 
 
@@ -147,13 +148,13 @@ head(reducedDim(sce, "TSNE"))
 ```
 
 ```
-##         [,1]   [,2]
-## [1,]   2.695 -25.15
-## [2,]   3.495 -23.44
-## [3,]   1.222 -20.84
-## [4,]   5.914  26.88
-## [5,]   4.174  31.35
-## [6,] -11.596 -26.63
+##        [,1]   [,2]
+## [1,]  4.677 -25.14
+## [2,]  5.249 -23.49
+## [3,]  1.793 -21.18
+## [4,]  7.932  24.58
+## [5,]  6.630  29.86
+## [6,] -9.646 -28.43
 ```
 
 ## Visualizing with *[scater](https://bioconductor.org/packages/3.12/scater)*
@@ -225,8 +226,8 @@ plotTSNE(sce, colour_by="label", other_fields="category") +
 ```
 
 <div class="figure">
-<img src="reduced-dimensions_files/figure-html/scater-tsne-color-cd3-facet-1.png" alt="$t$-SNE coloured by the cluster identity and faceted by the log-size factor." width="672" />
-<p class="caption">(\#fig:scater-tsne-color-cd3-facet)$t$-SNE coloured by the cluster identity and faceted by the log-size factor.</p>
+<img src="reduced-dimensions_files/figure-html/scater-tsne-color-cd3-facet-1.png" alt="$t$-SNE coloured by the cluster identity and faceted by the log-size factor after binning." width="960" />
+<p class="caption">(\#fig:scater-tsne-color-cd3-facet)$t$-SNE coloured by the cluster identity and faceted by the log-size factor after binning.</p>
 </div>
 
 I could go on, but I won't.
