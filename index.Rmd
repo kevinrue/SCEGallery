@@ -3,6 +3,7 @@ title: "SCE Gallery"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
+bibliography: ref.bib
 biblio-style: apalike
 link-citations: yes
 favicon: "favicon.ico"
@@ -27,4 +28,4 @@ I'll finish with a quote from Keats, for those of us unfortunate to have to stud
 
 > "Beauty is truth, truth beauty,"--that is all Ye know on earth, and all ye need to know.
 
-That's the right attitude.
+Pretty much sums up the field.
