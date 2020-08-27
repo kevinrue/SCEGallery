@@ -1,0 +1,12 @@
+Package: SCEGallery
+Title: The SingleCellExperiment Gallery
+Version: 1.0.0
+Date: 2020-08-10
+Authors@R: c( 
+        person('Aaron', 'Lun', role = c('aut', 'cre'), email="infinite.monkeys.with.keyboards@gmail.com")
+    )
+Description: 
+    A gallery containing a variety of visualizations for SingleCellExperiment objects.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
