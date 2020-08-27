@@ -8,5 +8,5 @@ language:
 cover-image: "images/cover.png"
 repo: "Bioconductor/OrchestratingSingleCellAnalysis"
 output_dir: "docs"
-rmd_files: ["index.Rmd"
+rmd_files: ["index.Rmd",
     "reduced-dimensions.Rmd"]
