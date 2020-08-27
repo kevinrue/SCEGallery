@@ -1,6 +1,10 @@
+---
+bibliography: ref.bib
+---
+
 # Plotting reduced dimensions
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, results='asis'}
 rebook::chapterPreamble()
 ```
 
@@ -110,7 +114,7 @@ plotUMAP(sce, colour_by="CD3E", swap_rownames="Symbol") +
 In fact, you can tell `plotTSNE()` and `plotUMAP()` to carry over any `colData()` field from the `SingleCellExperiment`.
 These fields are inserted into the `data.frame` and can be used in any `r CRANpkg("ggplot2")`-compatible function:
 
-```{r scater-tsne-color-cd3-facet, fig.cap="$t$-SNE coloured by the cluster identity and faceted by the log-size factor."}
+```{r scater-tsne-color-cd3-facet, fig.width=10, fig.height=5, fig.cap="$t$-SNE coloured by the cluster identity and faceted by the log-size factor after binning."}
 set.seed(119)
 sce$category <- cut(log(sizeFactors(sce)), 3)
 plotTSNE(sce, colour_by="label", other_fields="category") +

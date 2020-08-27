@@ -9,4 +9,5 @@ cover-image: "images/cover.png"
 repo: "Bioconductor/OrchestratingSingleCellAnalysis"
 output_dir: "docs"
 rmd_files: ["index.Rmd",
-    "reduced-dimensions.Rmd"]
+    "reduced-dimensions.Rmd",
+    "bibliography.Rmd"]
