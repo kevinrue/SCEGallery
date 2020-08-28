@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>SCE Gallery</title>
-  <meta name="description" content="SCE Gallery" />
+  <title>The SingleCellExperiment Gallery</title>
+  <meta name="description" content="The SingleCellExperiment Gallery" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="SCE Gallery" />
+  <meta property="og:title" content="The SingleCellExperiment Gallery" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="https://www.bioconductor.org/images/logo_bioconductor.gif" />
@@ -16,14 +16,14 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="SCE Gallery" />
+  <meta name="twitter:title" content="The SingleCellExperiment Gallery" />
   
   
   <meta name="twitter:image" content="https://www.bioconductor.org/images/logo_bioconductor.gif" />
 
 
 
-<meta name="date" content="2020-08-26" />
+<meta name="date" content="2020-08-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -153,7 +153,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SCE Gallery</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The SingleCellExperiment Gallery</a>
           </h1>
         </div>
 
@@ -162,21 +162,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">SCE Gallery</h1>
-<p class="date"><em>2020-08-26</em></p>
+<h1 class="title">The SingleCellExperiment Gallery</h1>
+<p class="date"><em>2020-08-27</em></p>
 </div>
 <div id="welcome" class="section level1 unnumbered">
 <h1>Welcome</h1>
 <p><a href="https://bioconductor.org"><img src="https://github.com/Bioconductor/BiocStickers/raw/master/Bioconductor/Bioconductor-serial.gif" width="200" alt="Bioconductor Sticker" align="right" style="margin: 0 1em 0 1em" /></a></p>
 <p>One of the most important parts of single-cell data analysis is visualization.
 In fact, it could even be said that this is <em>the</em> most important part of the analysis.
-I mean, how else can we make Figure 1 of that <em>Nature</em> paper without some sweet, sweet <span class="math inline">\(t\)</span>-SNEs? (Or UMAPs.)</p>
-<p>This book will showcase various methods for visualizing single-cell data from the standard <code>SingleCellExperiment</code> container.
+How else can we make Figure 1 of our <em>Nature</em> papers without some sweet, sweet <span class="math inline">\(t\)</span>-SNEs? (Or UMAPs.)
+We need something to compete with the aesthetic appeal of a “representative” microscope image, after all.</p>
+<p>This book will showcase various methods for visualizing single-cell data from a <code>SingleCellExperiment</code> object.
 Each chapter focuses on a particular aspect of data visualization,
-starting with a brief analysis to set up the <code>SingleCellExperiment</code>
-before applying plotting functions from different packages.
-Readers can then pick and choose their poison in a bake-off between plotting philosophies.</p>
-<p>I’ll finish with a quote from Keats, for those of us unfortunate to have to study poetry in high school:</p>
+starting with a brief analysis to set up the <code>SingleCellExperiment</code> before applying a range of plotting functions.
+Readers can then pick and choose their poison in a bake-off between visualization philosophies.</p>
+<p>All of the visualization packages presented here are available from the <a href="https://bioconductor.org">Bioconductor project</a>.
+The major players are <em><a href="https://bioconductor.org/packages/3.12/scater">scater</a></em>, a trusty old workhorse for working with <code>SingleCellExperiment</code> objects;
+<em><a href="https://bioconductor.org/packages/3.12/dittoSeq">dittoSeq</a></em>, a more recent package focusing on colorblind-friendly visualizations;
+and <em><a href="https://bioconductor.org/packages/3.12/scDataviz">scDataviz</a></em>, yet another upstart offering plotting capabilities.
+If you’re a Bioconductor package developer and you think you can do better, bring it. (With a PR.)</p>
+<p>I’ll finish with a quote from Keats, for those of us unfortunate enough to have study poetry in high school:</p>
 <blockquote>
 <p>“Beauty is truth, truth beauty,”–that is all Ye know on earth, and all ye need to know.</p>
 </blockquote>
