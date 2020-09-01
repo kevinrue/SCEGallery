@@ -10,4 +10,5 @@ repo: "Bioconductor/OrchestratingSingleCellAnalysis"
 output_dir: "docs"
 rmd_files: ["index.Rmd",
     "reduced-dimensions.Rmd",
+    "gene-expression.Rmd",
     "bibliography.Rmd"]

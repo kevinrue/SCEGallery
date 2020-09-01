@@ -1,0 +1,27 @@
+---
+bibliography: ref.bib
+---
+
+# Plotting gene expression 
+
+```{r, echo=FALSE, results='asis'}
+rebook::chapterPreamble()
+```
+
+## Foreword 
+
+If "CSI: Miami" has taught me anything, it's that Miami is made of palm trees.
+On the sidewalks, in the parks, on people's lawns: they're basically weeds over there.
+I mention this because I get a strange sense of déjà vu when I read single-cell papers:
+just replace the palm trees with violin plots and boom! - you're in a bioinformatics version of South Beach.
+Admittedly, violin plots do provide a compact yet informative visualization of the distribution of expression values, 
+serving as a satisfactory, possibly even decent compromise between boxplots and histograms.
+(Yes, I do know about ridgeline plots.
+No, don't try to sell them to me.)
+This chapter will show you how to contribute to the violin plot overdose in the single-cell field.
+
+> Sounds like it was rated R... for excessive violins. 
+>
+> (•\_•) / ( •\_•)>⌐■-■ / (⌐■\_■)
+>
+> YEAAAAAHH!
