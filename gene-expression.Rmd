@@ -20,8 +20,108 @@ serving as a satisfactory, possibly even decent compromise between boxplots and 
 No, don't try to sell them to me.)
 This chapter will show you how to contribute to the violin plot overdose in the single-cell field.
 
-> Sounds like it was rated R... for excessive violins. 
+> This chapter's rated R... for excessive violins. 
 >
 > (•\_•) / ( •\_•)>⌐■-■ / (⌐■\_■)
 >
 > YEAAAAAHH!
+
+## Setting up the dataset
+
+At one point, it was highly fashionable to perform scRNA-seq on the pancreas.
+After all, it's a highly heterogeneous tissue with clear differences between cell types, which makes it easy to use to generate some impressive-looking plots.
+Following this example, we'll be using a pancreas dataset from @segerstolpe2016singlecell for our demonstrations here.
+
+```{r}
+library(scRNAseq)
+sce <- SegerstolpePancreasData()
+```
+
+We need to generate normalized log-expression values for high-quality cells.
+As it happens, the authors provided some indications of which cells were low-quality, which we combine with our own filtering (see [the other book](http://bioconductor.org/books/devel/OSCA/segerstolpe-human-pancreas-smart-seq2.html) for details).
+
+```{r}
+low.qual <- sce$`single cell well quality` == "low quality cell"
+
+library(scater)
+stats <- perCellQCMetrics(sce)
+qc <- quickPerCellQC(stats, percent_subsets="altexps_ERCC_percent",
+    batch=sce$individual,
+    subset=!sce$individual %in% c("HP1504901", "HP1509101"))
+
+sce <- sce[,!(qc$discard | low.qual)]
+sce <- logNormCounts(sce)
+```
+
+Happily enough, the authors also provided cell type labels (`cell type`) and disease status (`disease`) for each individual.
+We'll be using these to spice up some of the visualizations below.
+
+## Visualizing with `r Biocpkg("scater")`
+
+When one thinks of the pancreas, one thinks of insulin, and so Figure \@ref(fig:pancreas-ins-scater) shows the distribution of _INS_ expression in each cell type.
+We call `r Biocpkg("scater")`'s `plotExpression()` function [@mccarthy2017scater] with `features="INS"`, which extracts the log-expression values of _INS_ from `sce`; along with `x="cell type"`, to specify that we want the cell type identities on the x-axis.
+Again, the output of this function is a `ggplot` object so we can add more layers to customize the plot's appearance - in this case, we've flipped the coordinates to improve the label visibility.
+
+```{r pancreas-ins-scater, fig.cap="Distribution of _INS_ expression in each cell type of the Segerstolpe dataset. Each point represents a cell and is colored by its assigned cell type for an extra touch of aesthetics."}
+library(ggplot2)
+plotExpression(sce, features="INS", x="cell type", 
+    colour_by="cell type") + coord_flip()
+```
+
+It might seem redundant to color by the same variable on the axis, but this can be particularly useful in more complex plots.
+Color-coding in Figure \@ref(fig:pancreas-ins-scater-individual) allows us to easily compare expression across the same cell type in different donors.
+We also add some grid lines to make it easier to compare across facets. 
+
+```{r pancreas-ins-scater-individual, fig.width=10, fig.height=10, fig.cap="Distribution of _INS_ expression in each cell type for each donor of the Segerstolpe dataset. Each point represents a cell and is colored by its assigned cell type, while each facet contains all cells from a particular donor."}
+plotExpression(sce, features="INS", x="cell type", colour_by="cell type",
+    other_fields="individual") + 
+    coord_flip() + 
+    facet_wrap(~individual) +
+    theme(panel.grid.major.x = element_line(size=.1, color="grey"))
+```
+
+More simply, we could color by any other interesting factor in `colData(sce)`, such as the disease status (Figure \@ref(fig:pancreas-ins-scater-disease)):
+
+```{r pancreas-ins-scater-disease, fig.cap="Distribution of _INS_ expression in each cell type of the Segerstolpe dataset. Each point represents a cell and is colored by the disease status of its donor of origin."}
+plotExpression(sce, features="INS", x="cell type", 
+    colour_by="disease") + coord_flip()
+```
+
+Or possibly a continuous variable such as size factor for each cell (Figure \@ref(fig:pancreas-ins-scater-sf)).
+Now, the `colData()` does contain a `"sizeFactor"` variable but we would like to color by the _log-transformed_ size factor to improve resolution among low size factors.
+This is easily achieved by log-transforming the size factors ourselves and then passing them to `plotExpression()` inside a `DataFrame()`; this tells the function to use the supplied values directly.
+(An even more succinct method is to pass it inside an `I()` call, but this means we won't be able to insert the `"LogSizeFactor"` name in the legend.)
+
+```{r pancreas-ins-scater-sf, fig.cap="Distribution of _INS_ expression in each cell type of the Segerstolpe dataset. Each point represents a cell and is colored by its log-transformed size factor."}
+log.sf <- DataFrame(LogSizeFactors=log2(sizeFactors(sce)))
+plotExpression(sce, features="INS", x="cell type", 
+    colour_by=log.sf) + coord_flip()
+```
+
+Alternatively, we could color by the cell type while having the log-size factors on one of the axes (Figure \@ref(fig:pancreas-ins-scater-sf-axis)).
+`plotExpression()` is smart enough to detect the type of the variables on the axes to generate an appropriate plot - in this case, switching from those violins to a scatter plot.
+
+```{r pancreas-ins-scater-sf-axis, fig.cap="_INS_ expression against the log-size factor in the Segerstolpe dataset. Each point represents a cell and is colored by its assigned cell type."}
+plotExpression(sce, features="INS", x=log.sf, colour_by="cell type") 
+```
+
+The same procedure also works with other genes.
+For example, we can plot _INS_ against the other famous product of the pancreas, _GCG_ (Figure \@ref(fig:pancreas-ins-gcg-scater)).
+
+```{r pancreas-ins-gcg-scater, fig.cap="_INS_ expression against _GCG_ expression in the Segerstolpe dataset. Each point represents a cell and is colored by its assigned cell type."}
+plotExpression(sce, features="INS", x="GCG", colour_by="cell type") 
+```
+
+Speaking of other genes, we can also pass a vector of gene names in `features=`.
+When `x=` is also specified, this will create one facet per gene (Figure \@ref(fig:pancreas-many-scater)).
+
+```{r pancreas-many-scater, fig.width=10, fig.height=10, fig.cap="Distribution of the expression of various pancreas-related marker genes in the Segerstolpe dataset. Each point represents a cell and is colored by its assigned cell type, while each facet corresponds to a single marker gene."}
+plotExpression(sce, features=c("INS", "GCG", "PPY", "SST"), 
+    x="cell type", colour_by="cell type") + coord_flip()
+```
+
+## Session information {-}
+
+```{r, echo=FALSE, results="asis"}
+rebook::prettySessionInfo()
+```
