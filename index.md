@@ -1,6 +1,6 @@
 --- 
 title: "The SingleCellExperiment Gallery"
-date: "2020-08-27"
+date: "2020-09-14"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: ref.bib

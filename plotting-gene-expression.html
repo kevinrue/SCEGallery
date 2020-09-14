@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Plotting gene expression | The SingleCellExperiment Gallery</title>
+  <meta name="description" content="Chapter 2 Plotting gene expression | The SingleCellExperiment Gallery" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Plotting gene expression | The SingleCellExperiment Gallery" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="https://www.bioconductor.org/images/logo_bioconductor.gif" />
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Plotting gene expression | The SingleCellExperiment Gallery" />
+  
+  
+  <meta name="twitter:image" content="https://www.bioconductor.org/images/logo_bioconductor.gif" />
+
+
+
+<meta name="date" content="2020-09-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="prev" href="plotting-reduced-dimensions.html"/>
+<link rel="next" href="bibliography.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Orchestrating Single-Cell Analysis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
+<li class="chapter" data-level="1" data-path="plotting-reduced-dimensions.html"><a href="plotting-reduced-dimensions.html"><i class="fa fa-check"></i><b>1</b> Plotting reduced dimensions</a><ul>
+<li class="chapter" data-level="1.1" data-path="plotting-reduced-dimensions.html"><a href="plotting-reduced-dimensions.html#foreword"><i class="fa fa-check"></i><b>1.1</b> Foreword</a></li>
+<li class="chapter" data-level="1.2" data-path="plotting-reduced-dimensions.html"><a href="plotting-reduced-dimensions.html#setting-up-the-data"><i class="fa fa-check"></i><b>1.2</b> Setting up the data</a></li>
+<li class="chapter" data-level="1.3" data-path="plotting-reduced-dimensions.html"><a href="plotting-reduced-dimensions.html#visualizing-with-scater"><i class="fa fa-check"></i><b>1.3</b> Visualizing with <em><span>scater</span></em></a></li>
+<li class="chapter" data-level="" data-path="plotting-reduced-dimensions.html"><a href="plotting-reduced-dimensions.html#session-information"><i class="fa fa-check"></i>Session information</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="plotting-gene-expression.html"><a href="plotting-gene-expression.html"><i class="fa fa-check"></i><b>2</b> Plotting gene expression</a><ul>
+<li class="chapter" data-level="2.1" data-path="plotting-reduced-dimensions.html"><a href="plotting-reduced-dimensions.html#foreword"><i class="fa fa-check"></i><b>2.1</b> Foreword</a></li>
+<li class="chapter" data-level="2.2" data-path="plotting-gene-expression.html"><a href="plotting-gene-expression.html#setting-up-the-dataset"><i class="fa fa-check"></i><b>2.2</b> Setting up the dataset</a></li>
+<li class="chapter" data-level="2.3" data-path="plotting-reduced-dimensions.html"><a href="plotting-reduced-dimensions.html#visualizing-with-scater"><i class="fa fa-check"></i><b>2.3</b> Visualizing with <em><span>scater</span></em></a></li>
+<li class="chapter" data-level="" data-path="plotting-reduced-dimensions.html"><a href="plotting-reduced-dimensions.html#session-information"><i class="fa fa-check"></i>Session information</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>3</b> Bibliography</a></li>
+<li class="divider"></li>
+<li><a href="https://bioconductor.org" target="blank">Published by Bioconductor</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The SingleCellExperiment Gallery</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="plotting-gene-expression" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Plotting gene expression</h1>
+<script>
+document.addEventListener("click", function (event) {
+    if (event.target.classList.contains("rebook-collapse")) {
+        event.target.classList.toggle("active");
+        var content = event.target.nextElementSibling;
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+    }
+})
+</script>
+<style>
+.rebook-collapse {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.rebook-content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+</style>
+<div id="foreword" class="section level2">
+<h2><span class="header-section-number">2.1</span> Foreword</h2>
+<p>If “CSI: Miami” has taught me anything, it’s that Miami is made of palm trees.
+On the sidewalks, in the parks, on people’s lawns: they’re basically weeds over there.
+I mention this because I get a strange sense of déjà vu when I read single-cell papers:
+just replace the palm trees with violin plots and boom! - you’re in a bioinformatics version of South Beach.
+Admittedly, violin plots do provide a compact yet informative visualization of the distribution of expression values,
+serving as a satisfactory, possibly even decent compromise between boxplots and histograms.
+(Yes, I do know about ridgeline plots.
+No, don’t try to sell them to me.)
+This chapter will show you how to contribute to the violin plot overdose in the single-cell field.</p>
+<blockquote>
+<p>This chapter’s rated R… for excessive violins.</p>
+<p>(•_•) / ( •_•)&gt;⌐■-■ / (⌐■_■)</p>
+<p>YEAAAAAHH!</p>
+</blockquote>
+</div>
+<div id="setting-up-the-dataset" class="section level2">
+<h2><span class="header-section-number">2.2</span> Setting up the dataset</h2>
+<p>At one point, it was highly fashionable to perform scRNA-seq on the pancreas.
+After all, it’s a highly heterogeneous tissue with clear differences between cell types, which makes it easy to use to generate some impressive-looking plots.
+Following this example, we’ll be using a pancreas dataset from <span class="citation">Segerstolpe et al. (<a href="#ref-segerstolpe2016singlecell" role="doc-biblioref">2016</a>)</span> for our demonstrations here.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="plotting-gene-expression.html#cb16-1"></a><span class="kw">library</span>(scRNAseq)</span>
+<span id="cb16-2"><a href="plotting-gene-expression.html#cb16-2"></a>sce &lt;-<span class="st"> </span><span class="kw">SegerstolpePancreasData</span>()</span></code></pre></div>
+<p>We need to generate normalized log-expression values for high-quality cells.
+As it happens, the authors provided some indications of which cells were low-quality, which we combine with our own filtering (see <a href="http://bioconductor.org/books/devel/OSCA/segerstolpe-human-pancreas-smart-seq2.html">the other book</a> for details).</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="plotting-gene-expression.html#cb17-1"></a>low.qual &lt;-<span class="st"> </span>sce<span class="op">$</span><span class="st">`</span><span class="dt">single cell well quality</span><span class="st">`</span> <span class="op">==</span><span class="st"> &quot;low quality cell&quot;</span></span>
+<span id="cb17-2"><a href="plotting-gene-expression.html#cb17-2"></a></span>
+<span id="cb17-3"><a href="plotting-gene-expression.html#cb17-3"></a><span class="kw">library</span>(scater)</span>
+<span id="cb17-4"><a href="plotting-gene-expression.html#cb17-4"></a>stats &lt;-<span class="st"> </span><span class="kw">perCellQCMetrics</span>(sce)</span>
+<span id="cb17-5"><a href="plotting-gene-expression.html#cb17-5"></a>qc &lt;-<span class="st"> </span><span class="kw">quickPerCellQC</span>(stats, <span class="dt">percent_subsets=</span><span class="st">&quot;altexps_ERCC_percent&quot;</span>,</span>
+<span id="cb17-6"><a href="plotting-gene-expression.html#cb17-6"></a>    <span class="dt">batch=</span>sce<span class="op">$</span>individual,</span>
+<span id="cb17-7"><a href="plotting-gene-expression.html#cb17-7"></a>    <span class="dt">subset=</span><span class="op">!</span>sce<span class="op">$</span>individual <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;HP1504901&quot;</span>, <span class="st">&quot;HP1509101&quot;</span>))</span>
+<span id="cb17-8"><a href="plotting-gene-expression.html#cb17-8"></a></span>
+<span id="cb17-9"><a href="plotting-gene-expression.html#cb17-9"></a>sce &lt;-<span class="st"> </span>sce[,<span class="op">!</span>(qc<span class="op">$</span>discard <span class="op">|</span><span class="st"> </span>low.qual)]</span>
+<span id="cb17-10"><a href="plotting-gene-expression.html#cb17-10"></a>sce &lt;-<span class="st"> </span><span class="kw">logNormCounts</span>(sce)</span></code></pre></div>
+<p>Happily enough, the authors also provided cell type labels (<code>cell type</code>) and disease status (<code>disease</code>) for each individual.
+We’ll be using these to spice up some of the visualizations below.</p>
+</div>
+<div id="visualizing-with-scater" class="section level2">
+<h2><span class="header-section-number">2.3</span> Visualizing with <em><a href="https://bioconductor.org/packages/3.12/scater">scater</a></em></h2>
+<p>When one thinks of the pancreas, one thinks of insulin, and so Figure <a href="plotting-gene-expression.html#fig:pancreas-ins-scater">2.1</a> shows the distribution of <em>INS</em> expression in each cell type.
+We call <em><a href="https://bioconductor.org/packages/3.12/scater">scater</a></em>’s <code>plotExpression()</code> function <span class="citation">(McCarthy et al. <a href="#ref-mccarthy2017scater" role="doc-biblioref">2017</a>)</span> with <code>features="INS"</code>, which extracts the log-expression values of <em>INS</em> from <code>sce</code>; along with <code>x="cell type"</code>, to specify that we want the cell type identities on the x-axis.
+Again, the output of this function is a <code>ggplot</code> object so we can add more layers to customize the plot’s appearance - in this case, we’ve flipped the coordinates to improve the label visibility.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="plotting-gene-expression.html#cb18-1"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb18-2"><a href="plotting-gene-expression.html#cb18-2"></a><span class="kw">plotExpression</span>(sce, <span class="dt">features=</span><span class="st">&quot;INS&quot;</span>, <span class="dt">x=</span><span class="st">&quot;cell type&quot;</span>, </span>
+<span id="cb18-3"><a href="plotting-gene-expression.html#cb18-3"></a>    <span class="dt">colour_by=</span><span class="st">&quot;cell type&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">coord_flip</span>()</span></code></pre></div>
+<div class="figure"><span id="fig:pancreas-ins-scater"></span>
+<img src="gene-expression_files/figure-html/pancreas-ins-scater-1.png" alt="Distribution of _INS_ expression in each cell type of the Segerstolpe dataset. Each point represents a cell and is colored by its assigned cell type for an extra touch of aesthetics." width="672" />
+<p class="caption">
+Figure 2.1: Distribution of <em>INS</em> expression in each cell type of the Segerstolpe dataset. Each point represents a cell and is colored by its assigned cell type for an extra touch of aesthetics.
+</p>
+</div>
+<p>It might seem redundant to color by the same variable on the axis, but this can be particularly useful in more complex plots.
+Color-coding in Figure <a href="plotting-gene-expression.html#fig:pancreas-ins-scater-individual">2.2</a> allows us to easily compare expression across the same cell type in different donors.
+We also add some grid lines to make it easier to compare across facets.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="plotting-gene-expression.html#cb19-1"></a><span class="kw">plotExpression</span>(sce, <span class="dt">features=</span><span class="st">&quot;INS&quot;</span>, <span class="dt">x=</span><span class="st">&quot;cell type&quot;</span>, <span class="dt">colour_by=</span><span class="st">&quot;cell type&quot;</span>,</span>
+<span id="cb19-2"><a href="plotting-gene-expression.html#cb19-2"></a>    <span class="dt">other_fields=</span><span class="st">&quot;individual&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb19-3"><a href="plotting-gene-expression.html#cb19-3"></a><span class="st">    </span><span class="kw">coord_flip</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb19-4"><a href="plotting-gene-expression.html#cb19-4"></a><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>individual) <span class="op">+</span></span>
+<span id="cb19-5"><a href="plotting-gene-expression.html#cb19-5"></a><span class="st">    </span><span class="kw">theme</span>(<span class="dt">panel.grid.major.x =</span> <span class="kw">element_line</span>(<span class="dt">size=</span>.<span class="dv">1</span>, <span class="dt">color=</span><span class="st">&quot;grey&quot;</span>))</span></code></pre></div>
+<div class="figure"><span id="fig:pancreas-ins-scater-individual"></span>
+<img src="gene-expression_files/figure-html/pancreas-ins-scater-individual-1.png" alt="Distribution of _INS_ expression in each cell type for each donor of the Segerstolpe dataset. Each point represents a cell and is colored by its assigned cell type, while each facet contains all cells from a particular donor." width="960" />
+<p class="caption">
+Figure 2.2: Distribution of <em>INS</em> expression in each cell type for each donor of the Segerstolpe dataset. Each point represents a cell and is colored by its assigned cell type, while each facet contains all cells from a particular donor.
+</p>
+</div>
+<p>More simply, we could color by any other interesting factor in <code>colData(sce)</code>, such as the disease status (Figure <a href="plotting-gene-expression.html#fig:pancreas-ins-scater-disease">2.3</a>):</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="plotting-gene-expression.html#cb20-1"></a><span class="kw">plotExpression</span>(sce, <span class="dt">features=</span><span class="st">&quot;INS&quot;</span>, <span class="dt">x=</span><span class="st">&quot;cell type&quot;</span>, </span>
+<span id="cb20-2"><a href="plotting-gene-expression.html#cb20-2"></a>    <span class="dt">colour_by=</span><span class="st">&quot;disease&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">coord_flip</span>()</span></code></pre></div>
+<div class="figure"><span id="fig:pancreas-ins-scater-disease"></span>
+<img src="gene-expression_files/figure-html/pancreas-ins-scater-disease-1.png" alt="Distribution of _INS_ expression in each cell type of the Segerstolpe dataset. Each point represents a cell and is colored by the disease status of its donor of origin." width="672" />
+<p class="caption">
+Figure 2.3: Distribution of <em>INS</em> expression in each cell type of the Segerstolpe dataset. Each point represents a cell and is colored by the disease status of its donor of origin.
+</p>
+</div>
+<p>Or possibly a continuous variable such as size factor for each cell (Figure <a href="plotting-gene-expression.html#fig:pancreas-ins-scater-sf">2.4</a>).
+Now, the <code>colData()</code> does contain a <code>"sizeFactor"</code> variable but we would like to color by the <em>log-transformed</em> size factor to improve resolution among low size factors.
+This is easily achieved by log-transforming the size factors ourselves and then passing them to <code>plotExpression()</code> inside a <code>DataFrame()</code>; this tells the function to use the supplied values directly.
+(An even more succinct method is to pass it inside an <code>I()</code> call, but this means we won’t be able to insert the <code>"LogSizeFactor"</code> name in the legend.)</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="plotting-gene-expression.html#cb21-1"></a>log.sf &lt;-<span class="st"> </span><span class="kw">DataFrame</span>(<span class="dt">LogSizeFactors=</span><span class="kw">log2</span>(<span class="kw">sizeFactors</span>(sce)))</span>
+<span id="cb21-2"><a href="plotting-gene-expression.html#cb21-2"></a><span class="kw">plotExpression</span>(sce, <span class="dt">features=</span><span class="st">&quot;INS&quot;</span>, <span class="dt">x=</span><span class="st">&quot;cell type&quot;</span>, </span>
+<span id="cb21-3"><a href="plotting-gene-expression.html#cb21-3"></a>    <span class="dt">colour_by=</span>log.sf) <span class="op">+</span><span class="st"> </span><span class="kw">coord_flip</span>()</span></code></pre></div>
+<div class="figure"><span id="fig:pancreas-ins-scater-sf"></span>
+<img src="gene-expression_files/figure-html/pancreas-ins-scater-sf-1.png" alt="Distribution of _INS_ expression in each cell type of the Segerstolpe dataset. Each point represents a cell and is colored by its log-transformed size factor." width="672" />
+<p class="caption">
+Figure 2.4: Distribution of <em>INS</em> expression in each cell type of the Segerstolpe dataset. Each point represents a cell and is colored by its log-transformed size factor.
+</p>
+</div>
+<p>Alternatively, we could color by the cell type while having the log-size factors on one of the axes (Figure <a href="plotting-gene-expression.html#fig:pancreas-ins-scater-sf-axis">2.5</a>).
+<code>plotExpression()</code> is smart enough to detect the type of the variables on the axes to generate an appropriate plot - in this case, switching from those violins to a scatter plot.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="plotting-gene-expression.html#cb22-1"></a><span class="kw">plotExpression</span>(sce, <span class="dt">features=</span><span class="st">&quot;INS&quot;</span>, <span class="dt">x=</span>log.sf, <span class="dt">colour_by=</span><span class="st">&quot;cell type&quot;</span>) </span></code></pre></div>
+<div class="figure"><span id="fig:pancreas-ins-scater-sf-axis"></span>
+<img src="gene-expression_files/figure-html/pancreas-ins-scater-sf-axis-1.png" alt="_INS_ expression against the log-size factor in the Segerstolpe dataset. Each point represents a cell and is colored by its assigned cell type." width="672" />
+<p class="caption">
+Figure 2.5: <em>INS</em> expression against the log-size factor in the Segerstolpe dataset. Each point represents a cell and is colored by its assigned cell type.
+</p>
+</div>
+<p>The same procedure also works with other genes.
+For example, we can plot <em>INS</em> against the other famous product of the pancreas, <em>GCG</em> (Figure <a href="plotting-gene-expression.html#fig:pancreas-ins-gcg-scater">2.6</a>).</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="plotting-gene-expression.html#cb23-1"></a><span class="kw">plotExpression</span>(sce, <span class="dt">features=</span><span class="st">&quot;INS&quot;</span>, <span class="dt">x=</span><span class="st">&quot;GCG&quot;</span>, <span class="dt">colour_by=</span><span class="st">&quot;cell type&quot;</span>) </span></code></pre></div>
+<div class="figure"><span id="fig:pancreas-ins-gcg-scater"></span>
+<img src="gene-expression_files/figure-html/pancreas-ins-gcg-scater-1.png" alt="_INS_ expression against _GCG_ expression in the Segerstolpe dataset. Each point represents a cell and is colored by its assigned cell type." width="672" />
+<p class="caption">
+Figure 2.6: <em>INS</em> expression against <em>GCG</em> expression in the Segerstolpe dataset. Each point represents a cell and is colored by its assigned cell type.
+</p>
+</div>
+<p>Speaking of other genes, we can also pass a vector of gene names in <code>features=</code>.
+When <code>x=</code> is also specified, this will create one facet per gene (Figure <a href="plotting-gene-expression.html#fig:pancreas-many-scater">2.7</a>).</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="plotting-gene-expression.html#cb24-1"></a><span class="kw">plotExpression</span>(sce, <span class="dt">features=</span><span class="kw">c</span>(<span class="st">&quot;INS&quot;</span>, <span class="st">&quot;GCG&quot;</span>, <span class="st">&quot;PPY&quot;</span>, <span class="st">&quot;SST&quot;</span>), </span>
+<span id="cb24-2"><a href="plotting-gene-expression.html#cb24-2"></a>    <span class="dt">x=</span><span class="st">&quot;cell type&quot;</span>, <span class="dt">colour_by=</span><span class="st">&quot;cell type&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">coord_flip</span>()</span></code></pre></div>
+<div class="figure"><span id="fig:pancreas-many-scater"></span>
+<img src="gene-expression_files/figure-html/pancreas-many-scater-1.png" alt="Distribution of the expression of various pancreas-related marker genes in the Segerstolpe dataset. Each point represents a cell and is colored by its assigned cell type, while each facet corresponds to a single marker gene." width="960" />
+<p class="caption">
+Figure 2.7: Distribution of the expression of various pancreas-related marker genes in the Segerstolpe dataset. Each point represents a cell and is colored by its assigned cell type, while each facet corresponds to a single marker gene.
+</p>
+</div>
+</div>
+<div id="session-information" class="section level2 unnumbered">
+<h2>Session information</h2>
+<button class="rebook-collapse">
+View session info
+</button>
+<div class="rebook-content">
+<pre><code>R version 4.0.2 Patched (2020-09-10 r79182)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 20.04.1 LTS
+
+Matrix products: default
+BLAS/LAPACK: /usr/lib/x86_64-linux-gnu/openblas-openmp/libopenblasp-r0.3.8.so
+
+locale:
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=C             
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+
+attached base packages:
+[1] parallel  stats4    stats     graphics  grDevices utils     datasets 
+[8] methods   base     
+
+other attached packages:
+ [1] scater_1.17.4               ggplot2_3.3.2              
+ [3] scRNAseq_2.3.13             SingleCellExperiment_1.11.6
+ [5] SummarizedExperiment_1.19.6 DelayedArray_0.15.7        
+ [7] matrixStats_0.56.0          Matrix_1.2-18              
+ [9] Biobase_2.49.1              GenomicRanges_1.41.6       
+[11] GenomeInfoDb_1.25.11        IRanges_2.23.10            
+[13] S4Vectors_0.27.12           BiocGenerics_0.35.4        
+[15] BiocStyle_2.17.0            BiocManager_1.30.10        
+
+loaded via a namespace (and not attached):
+ [1] bitops_1.0-6                  bit64_4.0.5                  
+ [3] httr_1.4.2                    tools_4.0.2                  
+ [5] R6_2.4.1                      irlba_2.3.3                  
+ [7] vipor_0.4.5                   DBI_1.1.0                    
+ [9] colorspace_1.4-1              withr_2.2.0                  
+[11] gridExtra_2.3                 tidyselect_1.1.0             
+[13] processx_3.4.4                bit_4.0.4                    
+[15] curl_4.3                      compiler_4.0.2               
+[17] rebook_0.99.5                 graph_1.67.1                 
+[19] BiocNeighbors_1.7.0           labeling_0.3                 
+[21] bookdown_0.20                 scales_1.1.1                 
+[23] callr_3.4.4                   rappdirs_0.3.1               
+[25] stringr_1.4.0                 digest_0.6.25                
+[27] rmarkdown_2.3                 XVector_0.29.3               
+[29] pkgconfig_2.0.3               htmltools_0.5.0              
+[31] highr_0.8                     dbplyr_1.4.4                 
+[33] fastmap_1.0.1                 rlang_0.4.7                  
+[35] RSQLite_2.2.0                 shiny_1.5.0                  
+[37] DelayedMatrixStats_1.11.1     farver_2.0.3                 
+[39] generics_0.0.2                BiocParallel_1.23.2          
+[41] dplyr_1.0.2                   RCurl_1.98-1.2               
+[43] magrittr_1.5                  BiocSingular_1.5.0           
+[45] GenomeInfoDbData_1.2.3        scuttle_0.99.13              
+[47] Rcpp_1.0.5                    ggbeeswarm_0.6.0             
+[49] munsell_0.5.0                 viridis_0.5.1                
+[51] lifecycle_0.2.0               stringi_1.5.3                
+[53] yaml_2.2.1                    zlibbioc_1.35.0              
+[55] BiocFileCache_1.13.1          AnnotationHub_2.21.5         
+[57] grid_4.0.2                    blob_1.2.1                   
+[59] promises_1.1.1                ExperimentHub_1.15.3         
+[61] crayon_1.3.4                  lattice_0.20-41              
+[63] CodeDepends_0.6.5             knitr_1.29                   
+[65] ps_1.3.4                      pillar_1.4.6                 
+[67] codetools_0.2-16              XML_3.99-0.5                 
+[69] glue_1.4.2                    BiocVersion_3.12.0           
+[71] evaluate_0.14                 vctrs_0.3.4                  
+[73] httpuv_1.5.4                  gtable_0.3.0                 
+[75] purrr_0.3.4                   assertthat_0.2.1             
+[77] xfun_0.17                     rsvd_1.0.3                   
+[79] mime_0.9                      xtable_1.8-4                 
+[81] later_1.1.0.1                 viridisLite_0.3.0            
+[83] tibble_3.0.3                  AnnotationDbi_1.51.3         
+[85] beeswarm_0.2.3                memoise_1.1.0                
+[87] ellipsis_0.3.1                interactiveDisplayBase_1.27.5</code></pre>
+</div>
+
+</div>
+</div>
+<h3> Bibliography</h3>
+<div id="refs" class="references">
+<div id="ref-mccarthy2017scater">
+<p>McCarthy, D. J., K. R. Campbell, A. T. Lun, and Q. F. Wills. 2017. “Scater: pre-processing, quality control, normalization and visualization of single-cell RNA-seq data in R.” <em>Bioinformatics</em> 33 (8): 1179–86.</p>
+</div>
+<div id="ref-segerstolpe2016singlecell">
+<p>Segerstolpe, A., A. Palasantza, P. Eliasson, E. M. Andersson, A. C. Andreasson, X. Sun, S. Picelli, et al. 2016. “Single-Cell Transcriptome Profiling of Human Pancreatic Islets in Health and Type 2 Diabetes.” <em>Cell Metab.</em> 24 (4): 593–607.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="plotting-reduced-dimensions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bibliography.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/Bioconductor/OrchestratingSingleCellAnalysis-base/edit/master/gene-expression.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": "https://github.com/Bioconductor/OrchestratingSingleCellAnalysis-base/commits/master/gene-expression.Rmd",
+"text": null
+},
+"view": {
+"link": "https://github.com/Bioconductor/OrchestratingSingleCellAnalysis-base/blob/master/gene-expression.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

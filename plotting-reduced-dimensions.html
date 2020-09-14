@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2020-08-27" />
+<meta name="date" content="2020-09-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,8 +31,7 @@
   
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="index.html"/>
-<link rel="next" href="bibliography.html"/>
-<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<link rel="next" href="plotting-gene-expression.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,20 +49,22 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -83,7 +84,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -133,14 +134,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
-<li class="chapter" data-level="1" data-path="plotting-reduced-dimensions.html"><a href="plotting-reduced-dimensions.html"><i class="fa fa-check"></i><b>1</b> Plotting reduced dimensions</a>
-<ul>
+<li class="chapter" data-level="1" data-path="plotting-reduced-dimensions.html"><a href="plotting-reduced-dimensions.html"><i class="fa fa-check"></i><b>1</b> Plotting reduced dimensions</a><ul>
 <li class="chapter" data-level="1.1" data-path="plotting-reduced-dimensions.html"><a href="plotting-reduced-dimensions.html#foreword"><i class="fa fa-check"></i><b>1.1</b> Foreword</a></li>
 <li class="chapter" data-level="1.2" data-path="plotting-reduced-dimensions.html"><a href="plotting-reduced-dimensions.html#setting-up-the-data"><i class="fa fa-check"></i><b>1.2</b> Setting up the data</a></li>
 <li class="chapter" data-level="1.3" data-path="plotting-reduced-dimensions.html"><a href="plotting-reduced-dimensions.html#visualizing-with-scater"><i class="fa fa-check"></i><b>1.3</b> Visualizing with <em><span>scater</span></em></a></li>
 <li class="chapter" data-level="" data-path="plotting-reduced-dimensions.html"><a href="plotting-reduced-dimensions.html#session-information"><i class="fa fa-check"></i>Session information</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>2</b> Bibliography</a></li>
+<li class="chapter" data-level="2" data-path="plotting-gene-expression.html"><a href="plotting-gene-expression.html"><i class="fa fa-check"></i><b>2</b> Plotting gene expression</a><ul>
+<li class="chapter" data-level="2.1" data-path="plotting-reduced-dimensions.html"><a href="plotting-reduced-dimensions.html#foreword"><i class="fa fa-check"></i><b>2.1</b> Foreword</a></li>
+<li class="chapter" data-level="2.2" data-path="plotting-gene-expression.html"><a href="plotting-gene-expression.html#setting-up-the-dataset"><i class="fa fa-check"></i><b>2.2</b> Setting up the dataset</a></li>
+<li class="chapter" data-level="2.3" data-path="plotting-reduced-dimensions.html"><a href="plotting-reduced-dimensions.html#visualizing-with-scater"><i class="fa fa-check"></i><b>2.3</b> Visualizing with <em><span>scater</span></em></a></li>
+<li class="chapter" data-level="" data-path="plotting-reduced-dimensions.html"><a href="plotting-reduced-dimensions.html#session-information"><i class="fa fa-check"></i>Session information</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>3</b> Bibliography</a></li>
 <li class="divider"></li>
 <li><a href="https://bioconductor.org" target="blank">Published by Bioconductor</a></li>
 
@@ -161,7 +167,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="plotting-reduced-dimensions" class="section level1" number="1">
+<div id="plotting-reduced-dimensions" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Plotting reduced dimensions</h1>
 <script>
 document.addEventListener("click", function (event) {
@@ -196,7 +202,7 @@ document.addEventListener("click", function (event) {
   background-color: #f1f1f1;
 }
 </style>
-<div id="foreword" class="section level2" number="1.1">
+<div id="foreword" class="section level2">
 <h2><span class="header-section-number">1.1</span> Foreword</h2>
 <p>When one thinks of single-cell data analysis, one thinks of <span class="math inline">\(t\)</span>-SNEs.
 (Or maybe UMAPs, for the younger folks.)
@@ -207,21 +213,21 @@ Indeed, I personally prefer <span class="math inline">\(t\)</span>-SNEs as - wit
 while UMAPs look more like the aftermath of blowing your nose.
 But hey, to each their own.</p>
 </div>
-<div id="setting-up-the-data" class="section level2" number="1.2">
+<div id="setting-up-the-data" class="section level2">
 <h2><span class="header-section-number">1.2</span> Setting up the data</h2>
 <p>Here we’ll use one of the many PBMC datasets generated by 10X Genomics <span class="citation">(Zheng et al. <a href="#ref-zheng2017massively" role="doc-biblioref">2017</a>)</span>.
 One can only imagine how many times these PBMCs have been re-analyzed,
 surely there’s nothing we don’t know about these cells anymore.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="plotting-reduced-dimensions.html#cb1-1" aria-hidden="true"></a><span class="kw">library</span>(DropletTestFiles)</span>
-<span id="cb1-2"><a href="plotting-reduced-dimensions.html#cb1-2" aria-hidden="true"></a>fpath &lt;-<span class="st"> </span><span class="kw">getTestFile</span>(<span class="kw">file.path</span>(<span class="st">&quot;tenx-3.0.0-pbmc_10k_protein_v3&quot;</span>, </span>
-<span id="cb1-3"><a href="plotting-reduced-dimensions.html#cb1-3" aria-hidden="true"></a>    <span class="st">&quot;1.0.0/filtered.tar.gz&quot;</span>), <span class="dt">prefix=</span><span class="ot">TRUE</span>)</span>
-<span id="cb1-4"><a href="plotting-reduced-dimensions.html#cb1-4" aria-hidden="true"></a>tmp &lt;-<span class="st"> </span><span class="kw">tempfile</span>()</span>
-<span id="cb1-5"><a href="plotting-reduced-dimensions.html#cb1-5" aria-hidden="true"></a><span class="kw">untar</span>(fpath, <span class="dt">exdir=</span>tmp)</span>
-<span id="cb1-6"><a href="plotting-reduced-dimensions.html#cb1-6" aria-hidden="true"></a></span>
-<span id="cb1-7"><a href="plotting-reduced-dimensions.html#cb1-7" aria-hidden="true"></a><span class="kw">library</span>(DropletUtils)</span>
-<span id="cb1-8"><a href="plotting-reduced-dimensions.html#cb1-8" aria-hidden="true"></a>sce &lt;-<span class="st"> </span><span class="kw">read10xCounts</span>(<span class="kw">file.path</span>(tmp, <span class="st">&quot;filtered_feature_bc_matrix&quot;</span>))</span>
-<span id="cb1-9"><a href="plotting-reduced-dimensions.html#cb1-9" aria-hidden="true"></a>sce &lt;-<span class="st"> </span><span class="kw">splitAltExps</span>(sce, <span class="kw">rowData</span>(sce)<span class="op">$</span>Type) <span class="co"># splitting off the ADTs.</span></span>
-<span id="cb1-10"><a href="plotting-reduced-dimensions.html#cb1-10" aria-hidden="true"></a>sce</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="plotting-reduced-dimensions.html#cb1-1"></a><span class="kw">library</span>(DropletTestFiles)</span>
+<span id="cb1-2"><a href="plotting-reduced-dimensions.html#cb1-2"></a>fpath &lt;-<span class="st"> </span><span class="kw">getTestFile</span>(<span class="kw">file.path</span>(<span class="st">&quot;tenx-3.0.0-pbmc_10k_protein_v3&quot;</span>, </span>
+<span id="cb1-3"><a href="plotting-reduced-dimensions.html#cb1-3"></a>    <span class="st">&quot;1.0.0/filtered.tar.gz&quot;</span>), <span class="dt">prefix=</span><span class="ot">TRUE</span>)</span>
+<span id="cb1-4"><a href="plotting-reduced-dimensions.html#cb1-4"></a>tmp &lt;-<span class="st"> </span><span class="kw">tempfile</span>()</span>
+<span id="cb1-5"><a href="plotting-reduced-dimensions.html#cb1-5"></a><span class="kw">untar</span>(fpath, <span class="dt">exdir=</span>tmp)</span>
+<span id="cb1-6"><a href="plotting-reduced-dimensions.html#cb1-6"></a></span>
+<span id="cb1-7"><a href="plotting-reduced-dimensions.html#cb1-7"></a><span class="kw">library</span>(DropletUtils)</span>
+<span id="cb1-8"><a href="plotting-reduced-dimensions.html#cb1-8"></a>sce &lt;-<span class="st"> </span><span class="kw">read10xCounts</span>(<span class="kw">file.path</span>(tmp, <span class="st">&quot;filtered_feature_bc_matrix&quot;</span>))</span>
+<span id="cb1-9"><a href="plotting-reduced-dimensions.html#cb1-9"></a>sce &lt;-<span class="st"> </span><span class="kw">splitAltExps</span>(sce, <span class="kw">rowData</span>(sce)<span class="op">$</span>Type) <span class="co"># splitting off the ADTs.</span></span>
+<span id="cb1-10"><a href="plotting-reduced-dimensions.html#cb1-10"></a>sce</span></code></pre></div>
 <pre><code>## class: SingleCellExperiment 
 ## dim: 33538 7865 
 ## metadata(1): Samples
@@ -236,33 +242,33 @@ surely there’s nothing we don’t know about these cells anymore.</p>
 <p>We slap together a quick-and-dirty analysis with some of the usual packages <span class="citation">(Amezquita et al. <a href="#ref-amezquita2020orchestrating" role="doc-biblioref">2020</a>)</span>.
 Normally we would make some more diagnostic plots for each of these steps,
 but it would not do to distract from the star of the show in this chapter.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="plotting-reduced-dimensions.html#cb3-1" aria-hidden="true"></a><span class="kw">library</span>(scater)</span>
-<span id="cb3-2"><a href="plotting-reduced-dimensions.html#cb3-2" aria-hidden="true"></a><span class="kw">library</span>(scran)</span>
-<span id="cb3-3"><a href="plotting-reduced-dimensions.html#cb3-3" aria-hidden="true"></a><span class="kw">library</span>(scuttle)</span>
-<span id="cb3-4"><a href="plotting-reduced-dimensions.html#cb3-4" aria-hidden="true"></a><span class="kw">library</span>(bluster)</span>
-<span id="cb3-5"><a href="plotting-reduced-dimensions.html#cb3-5" aria-hidden="true"></a></span>
-<span id="cb3-6"><a href="plotting-reduced-dimensions.html#cb3-6" aria-hidden="true"></a><span class="co"># Quality control on the mitochondrial content:</span></span>
-<span id="cb3-7"><a href="plotting-reduced-dimensions.html#cb3-7" aria-hidden="true"></a>qcstats &lt;-<span class="st"> </span><span class="kw">perCellQCMetrics</span>(sce, <span class="dt">subsets=</span><span class="kw">list</span>(<span class="dt">Mito=</span><span class="kw">grep</span>(<span class="st">&quot;^MT-&quot;</span>, <span class="kw">rowData</span>(sce)<span class="op">$</span>Symbol)))</span>
-<span id="cb3-8"><a href="plotting-reduced-dimensions.html#cb3-8" aria-hidden="true"></a>discard &lt;-<span class="st"> </span><span class="kw">isOutlier</span>(qcstats<span class="op">$</span>subsets_Mito_percent, <span class="dt">type=</span><span class="st">&quot;higher&quot;</span>)</span>
-<span id="cb3-9"><a href="plotting-reduced-dimensions.html#cb3-9" aria-hidden="true"></a>sce &lt;-<span class="st"> </span>sce[,<span class="op">!</span>discard]</span>
-<span id="cb3-10"><a href="plotting-reduced-dimensions.html#cb3-10" aria-hidden="true"></a><span class="kw">summary</span>(discard)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="plotting-reduced-dimensions.html#cb3-1"></a><span class="kw">library</span>(scater)</span>
+<span id="cb3-2"><a href="plotting-reduced-dimensions.html#cb3-2"></a><span class="kw">library</span>(scran)</span>
+<span id="cb3-3"><a href="plotting-reduced-dimensions.html#cb3-3"></a><span class="kw">library</span>(scuttle)</span>
+<span id="cb3-4"><a href="plotting-reduced-dimensions.html#cb3-4"></a><span class="kw">library</span>(bluster)</span>
+<span id="cb3-5"><a href="plotting-reduced-dimensions.html#cb3-5"></a></span>
+<span id="cb3-6"><a href="plotting-reduced-dimensions.html#cb3-6"></a><span class="co"># Quality control on the mitochondrial content:</span></span>
+<span id="cb3-7"><a href="plotting-reduced-dimensions.html#cb3-7"></a>qcstats &lt;-<span class="st"> </span><span class="kw">perCellQCMetrics</span>(sce, <span class="dt">subsets=</span><span class="kw">list</span>(<span class="dt">Mito=</span><span class="kw">grep</span>(<span class="st">&quot;^MT-&quot;</span>, <span class="kw">rowData</span>(sce)<span class="op">$</span>Symbol)))</span>
+<span id="cb3-8"><a href="plotting-reduced-dimensions.html#cb3-8"></a>discard &lt;-<span class="st"> </span><span class="kw">isOutlier</span>(qcstats<span class="op">$</span>subsets_Mito_percent, <span class="dt">type=</span><span class="st">&quot;higher&quot;</span>)</span>
+<span id="cb3-9"><a href="plotting-reduced-dimensions.html#cb3-9"></a>sce &lt;-<span class="st"> </span>sce[,<span class="op">!</span>discard]</span>
+<span id="cb3-10"><a href="plotting-reduced-dimensions.html#cb3-10"></a><span class="kw">summary</span>(discard)</span></code></pre></div>
 <pre><code>##    Mode   FALSE    TRUE 
 ## logical    7569     296</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="plotting-reduced-dimensions.html#cb5-1" aria-hidden="true"></a><span class="co"># Normalization and feature selection:</span></span>
-<span id="cb5-2"><a href="plotting-reduced-dimensions.html#cb5-2" aria-hidden="true"></a>sce &lt;-<span class="st"> </span><span class="kw">logNormCounts</span>(sce)</span>
-<span id="cb5-3"><a href="plotting-reduced-dimensions.html#cb5-3" aria-hidden="true"></a>dec &lt;-<span class="st"> </span><span class="kw">modelGeneVarByPoisson</span>(sce)</span>
-<span id="cb5-4"><a href="plotting-reduced-dimensions.html#cb5-4" aria-hidden="true"></a>hvgs &lt;-<span class="st"> </span><span class="kw">getTopHVGs</span>(dec, <span class="dt">n=</span><span class="dv">4000</span>)</span>
-<span id="cb5-5"><a href="plotting-reduced-dimensions.html#cb5-5" aria-hidden="true"></a></span>
-<span id="cb5-6"><a href="plotting-reduced-dimensions.html#cb5-6" aria-hidden="true"></a><span class="co"># PCA and some clustering:</span></span>
-<span id="cb5-7"><a href="plotting-reduced-dimensions.html#cb5-7" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">117</span>)</span>
-<span id="cb5-8"><a href="plotting-reduced-dimensions.html#cb5-8" aria-hidden="true"></a>sce &lt;-<span class="st"> </span><span class="kw">runPCA</span>(sce, <span class="dt">subset_row=</span>hvgs)</span>
-<span id="cb5-9"><a href="plotting-reduced-dimensions.html#cb5-9" aria-hidden="true"></a><span class="kw">colLabels</span>(sce) &lt;-<span class="st"> </span><span class="kw">clusterRows</span>(<span class="kw">reducedDim</span>(sce), <span class="kw">NNGraphParam</span>())</span>
-<span id="cb5-10"><a href="plotting-reduced-dimensions.html#cb5-10" aria-hidden="true"></a></span>
-<span id="cb5-11"><a href="plotting-reduced-dimensions.html#cb5-11" aria-hidden="true"></a><span class="co"># Creating those sweet, sweet t-SNEs.</span></span>
-<span id="cb5-12"><a href="plotting-reduced-dimensions.html#cb5-12" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">118</span>)</span>
-<span id="cb5-13"><a href="plotting-reduced-dimensions.html#cb5-13" aria-hidden="true"></a>sce &lt;-<span class="st"> </span><span class="kw">runTSNE</span>(sce, <span class="dt">dimred=</span><span class="st">&quot;PCA&quot;</span>)</span>
-<span id="cb5-14"><a href="plotting-reduced-dimensions.html#cb5-14" aria-hidden="true"></a>sce &lt;-<span class="st"> </span><span class="kw">runUMAP</span>(sce, <span class="dt">dimred=</span><span class="st">&quot;PCA&quot;</span>)</span>
-<span id="cb5-15"><a href="plotting-reduced-dimensions.html#cb5-15" aria-hidden="true"></a>sce</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="plotting-reduced-dimensions.html#cb5-1"></a><span class="co"># Normalization and feature selection:</span></span>
+<span id="cb5-2"><a href="plotting-reduced-dimensions.html#cb5-2"></a>sce &lt;-<span class="st"> </span><span class="kw">logNormCounts</span>(sce)</span>
+<span id="cb5-3"><a href="plotting-reduced-dimensions.html#cb5-3"></a>dec &lt;-<span class="st"> </span><span class="kw">modelGeneVarByPoisson</span>(sce)</span>
+<span id="cb5-4"><a href="plotting-reduced-dimensions.html#cb5-4"></a>hvgs &lt;-<span class="st"> </span><span class="kw">getTopHVGs</span>(dec, <span class="dt">n=</span><span class="dv">4000</span>)</span>
+<span id="cb5-5"><a href="plotting-reduced-dimensions.html#cb5-5"></a></span>
+<span id="cb5-6"><a href="plotting-reduced-dimensions.html#cb5-6"></a><span class="co"># PCA and some clustering:</span></span>
+<span id="cb5-7"><a href="plotting-reduced-dimensions.html#cb5-7"></a><span class="kw">set.seed</span>(<span class="dv">117</span>)</span>
+<span id="cb5-8"><a href="plotting-reduced-dimensions.html#cb5-8"></a>sce &lt;-<span class="st"> </span><span class="kw">runPCA</span>(sce, <span class="dt">subset_row=</span>hvgs)</span>
+<span id="cb5-9"><a href="plotting-reduced-dimensions.html#cb5-9"></a><span class="kw">colLabels</span>(sce) &lt;-<span class="st"> </span><span class="kw">clusterRows</span>(<span class="kw">reducedDim</span>(sce), <span class="kw">NNGraphParam</span>())</span>
+<span id="cb5-10"><a href="plotting-reduced-dimensions.html#cb5-10"></a></span>
+<span id="cb5-11"><a href="plotting-reduced-dimensions.html#cb5-11"></a><span class="co"># Creating those sweet, sweet t-SNEs.</span></span>
+<span id="cb5-12"><a href="plotting-reduced-dimensions.html#cb5-12"></a><span class="kw">set.seed</span>(<span class="dv">118</span>)</span>
+<span id="cb5-13"><a href="plotting-reduced-dimensions.html#cb5-13"></a>sce &lt;-<span class="st"> </span><span class="kw">runTSNE</span>(sce, <span class="dt">dimred=</span><span class="st">&quot;PCA&quot;</span>)</span>
+<span id="cb5-14"><a href="plotting-reduced-dimensions.html#cb5-14"></a>sce &lt;-<span class="st"> </span><span class="kw">runUMAP</span>(sce, <span class="dt">dimred=</span><span class="st">&quot;PCA&quot;</span>)</span>
+<span id="cb5-15"><a href="plotting-reduced-dimensions.html#cb5-15"></a>sce</span></code></pre></div>
 <pre><code>## class: SingleCellExperiment 
 ## dim: 33538 7569 
 ## metadata(1): Samples
@@ -276,38 +282,42 @@ but it would not do to distract from the star of the show in this chapter.</p>
 ## altExpNames(1): Antibody Capture</code></pre>
 <p>We can see that the dimensionality reduction results are tucked away in the <code>reducedDims()</code> of the <code>sce</code> object.
 If you want to get in on the action, you can pull out the reduced dimensions yourself for plotting:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="plotting-reduced-dimensions.html#cb7-1" aria-hidden="true"></a><span class="kw">head</span>(<span class="kw">reducedDim</span>(sce, <span class="st">&quot;TSNE&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="plotting-reduced-dimensions.html#cb7-1"></a><span class="kw">head</span>(<span class="kw">reducedDim</span>(sce, <span class="st">&quot;TSNE&quot;</span>))</span></code></pre></div>
 <pre><code>##        [,1]   [,2]
-## [1,]  4.677 -25.14
-## [2,]  5.249 -23.49
-## [3,]  1.793 -21.18
-## [4,]  7.932  24.58
-## [5,]  6.630  29.86
-## [6,] -9.646 -28.43</code></pre>
+## [1,]  6.408 -22.65
+## [2,]  5.258 -20.71
+## [3,]  1.808 -20.09
+## [4,]  8.337  25.32
+## [5,]  5.944  29.59
+## [6,] -5.257 -31.47</code></pre>
 </div>
-<div id="visualizing-with-scater" class="section level2" number="1.3">
+<div id="visualizing-with-scater" class="section level2">
 <h2><span class="header-section-number">1.3</span> Visualizing with <em><a href="https://bioconductor.org/packages/3.12/scater">scater</a></em></h2>
 <p>We’ll start with the visualizations from the <em><a href="https://bioconductor.org/packages/3.12/scater">scater</a></em> package <span class="citation">(McCarthy et al. <a href="#ref-mccarthy2017scater" role="doc-biblioref">2017</a>)</span>.
-The <code>plotTSNE()</code> function creates <code>ggplot</code> objects that can be coloured by label:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="plotting-reduced-dimensions.html#cb9-1" aria-hidden="true"></a><span class="kw">plotTSNE</span>(sce, <span class="dt">colour_by=</span><span class="st">&quot;label&quot;</span>, <span class="dt">text_by=</span><span class="st">&quot;label&quot;</span>)</span></code></pre></div>
+The <code>plotTSNE()</code> function creates <code>ggplot</code> objects with various aesthetics, as shown in Figure <a href="plotting-reduced-dimensions.html#fig:scater-tsne-color-label">1.1</a>.
+Here, we have coloured each cell by its assigned label, throwing in the label name for good measure.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="plotting-reduced-dimensions.html#cb9-1"></a><span class="kw">plotTSNE</span>(sce, <span class="dt">colour_by=</span><span class="st">&quot;label&quot;</span>, <span class="dt">text_by=</span><span class="st">&quot;label&quot;</span>)</span></code></pre></div>
 <div class="figure"><span id="fig:scater-tsne-color-label"></span>
 <img src="reduced-dimensions_files/figure-html/scater-tsne-color-label-1.png" alt="$t$-SNE coloured by the cluster label." width="672" />
 <p class="caption">
 Figure 1.1: <span class="math inline">\(t\)</span>-SNE coloured by the cluster label.
 </p>
 </div>
-<p>… or by the expression of a particular gene, using the neon 80’s-throwback color scheme that is <em><a href="https://CRAN.R-project.org/package=viridis">viridis</a></em>:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="plotting-reduced-dimensions.html#cb10-1" aria-hidden="true"></a><span class="kw">plotTSNE</span>(sce, <span class="dt">colour_by=</span><span class="st">&quot;CD3E&quot;</span>, <span class="dt">swap_rownames=</span><span class="st">&quot;Symbol&quot;</span>, </span>
-<span id="cb10-2"><a href="plotting-reduced-dimensions.html#cb10-2" aria-hidden="true"></a>    <span class="dt">text_by=</span><span class="st">&quot;label&quot;</span>, <span class="dt">text_colour=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p>Alternatively, we might color each cell by the expression of a particular gene,
+using the neon 80’s-throwback color scheme that is <em><a href="https://CRAN.R-project.org/package=viridis">viridis</a></em> (Figure <a href="plotting-reduced-dimensions.html#fig:scater-tsne-color-cd3">1.2</a>).
+We set <code>swap_rownames=</code> to allow us to refer to genes using symbols rather than the more obtuse Ensembl identifiers.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="plotting-reduced-dimensions.html#cb10-1"></a><span class="kw">plotTSNE</span>(sce, <span class="dt">colour_by=</span><span class="st">&quot;CD3E&quot;</span>, <span class="dt">swap_rownames=</span><span class="st">&quot;Symbol&quot;</span>, </span>
+<span id="cb10-2"><a href="plotting-reduced-dimensions.html#cb10-2"></a>    <span class="dt">text_by=</span><span class="st">&quot;label&quot;</span>, <span class="dt">text_colour=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 <div class="figure"><span id="fig:scater-tsne-color-cd3"></span>
-<img src="reduced-dimensions_files/figure-html/scater-tsne-color-cd3-1.png" alt="$t$-SNE coloured by the expression of _CD3_." width="672" />
+<img src="reduced-dimensions_files/figure-html/scater-tsne-color-cd3-1.png" alt="$t$-SNE coloured by the expression of _CD3E_." width="672" />
 <p class="caption">
-Figure 1.2: <span class="math inline">\(t\)</span>-SNE coloured by the expression of <em>CD3</em>.
+Figure 1.2: <span class="math inline">\(t\)</span>-SNE coloured by the expression of <em>CD3E</em>.
 </p>
 </div>
-<p>This function and the equivalent <code>plotUMAP()</code> use the same <code>plotReducedDim()</code> function under the hood.
-We can generate plots for any dimensionality reduction result in <code>sce</code> by calling <code>plotReducedDim()</code> directly:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="plotting-reduced-dimensions.html#cb11-1" aria-hidden="true"></a><span class="kw">plotReducedDim</span>(sce, <span class="st">&quot;UMAP&quot;</span>, <span class="dt">colour_by=</span><span class="st">&quot;label&quot;</span>, <span class="dt">text_by=</span><span class="st">&quot;label&quot;</span>)</span></code></pre></div>
+<p>This function (and its sister <code>plotUMAP()</code>) use the same <code>plotReducedDim()</code> function under the hood.
+We can generate plots for any dimensionality reduction result in <code>sce</code> by calling <code>plotReducedDim()</code> directly,
+passing in the name of the result that we wish to visualize (Figure <a href="plotting-reduced-dimensions.html#fig:scater-umap-color-label">1.3</a>).</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="plotting-reduced-dimensions.html#cb11-1"></a><span class="kw">plotReducedDim</span>(sce, <span class="st">&quot;UMAP&quot;</span>, <span class="dt">colour_by=</span><span class="st">&quot;label&quot;</span>, <span class="dt">text_by=</span><span class="st">&quot;label&quot;</span>)</span></code></pre></div>
 <div class="figure"><span id="fig:scater-umap-color-label"></span>
 <img src="reduced-dimensions_files/figure-html/scater-umap-color-label-1.png" alt="UMAP coloured by the cluster label." width="672" />
 <p class="caption">
@@ -317,27 +327,36 @@ Figure 1.3: UMAP coloured by the cluster label.
 <p>And of course, this is all <code>ggplot</code>-based, so you can just add on your own layers to customize the aesthetics.
 Don’t like viridis?
 (Does anybody? Ho ho ho.)
-You can swap it out with a color scale of your choice using the relevant <em><a href="https://CRAN.R-project.org/package=ggplot2">ggplot2</a></em> functions:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="plotting-reduced-dimensions.html#cb12-1" aria-hidden="true"></a><span class="kw">plotUMAP</span>(sce, <span class="dt">colour_by=</span><span class="st">&quot;CD3E&quot;</span>, <span class="dt">swap_rownames=</span><span class="st">&quot;Symbol&quot;</span>) <span class="op">+</span></span>
-<span id="cb12-2"><a href="plotting-reduced-dimensions.html#cb12-2" aria-hidden="true"></a><span class="st">    </span><span class="kw">scale_color_gradient</span>(<span class="dt">low=</span><span class="st">&quot;grey&quot;</span>, <span class="dt">high=</span><span class="st">&quot;orange&quot;</span>)</span></code></pre></div>
+You can swap it out with a color scale of your choice using the relevant <em><a href="https://CRAN.R-project.org/package=ggplot2">ggplot2</a></em> functions,
+as shown in Figure <a href="plotting-reduced-dimensions.html#fig:scater-umap-color-cd3">1.4</a> with a grey-orange gradient for <em>CD3E</em> expression.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="plotting-reduced-dimensions.html#cb12-1"></a><span class="kw">plotUMAP</span>(sce, <span class="dt">colour_by=</span><span class="st">&quot;CD3E&quot;</span>, <span class="dt">swap_rownames=</span><span class="st">&quot;Symbol&quot;</span>) <span class="op">+</span></span>
+<span id="cb12-2"><a href="plotting-reduced-dimensions.html#cb12-2"></a><span class="st">    </span><span class="kw">scale_color_gradient</span>(<span class="dt">low=</span><span class="st">&quot;grey&quot;</span>, <span class="dt">high=</span><span class="st">&quot;orange&quot;</span>)</span></code></pre></div>
 <div class="figure"><span id="fig:scater-umap-color-cd3"></span>
-<img src="reduced-dimensions_files/figure-html/scater-umap-color-cd3-1.png" alt="UMAP coloured by the expression of _CD3_." width="672" />
+<img src="reduced-dimensions_files/figure-html/scater-umap-color-cd3-1.png" alt="UMAP coloured by the expression of _CD3E_." width="672" />
 <p class="caption">
-Figure 1.4: UMAP coloured by the expression of <em>CD3</em>.
+Figure 1.4: UMAP coloured by the expression of <em>CD3E</em>.
 </p>
 </div>
 <p>In fact, you can tell <code>plotTSNE()</code> and <code>plotUMAP()</code> to carry over any <code>colData()</code> field from the <code>SingleCellExperiment</code>.
-These fields are inserted into the <code>data.frame</code> and can be used in any <em><a href="https://CRAN.R-project.org/package=ggplot2">ggplot2</a></em>-compatible function:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="plotting-reduced-dimensions.html#cb13-1" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">119</span>)</span>
-<span id="cb13-2"><a href="plotting-reduced-dimensions.html#cb13-2" aria-hidden="true"></a>sce<span class="op">$</span>category &lt;-<span class="st"> </span><span class="kw">cut</span>(<span class="kw">log</span>(<span class="kw">sizeFactors</span>(sce)), <span class="dv">3</span>)</span>
-<span id="cb13-3"><a href="plotting-reduced-dimensions.html#cb13-3" aria-hidden="true"></a><span class="kw">plotTSNE</span>(sce, <span class="dt">colour_by=</span><span class="st">&quot;label&quot;</span>, <span class="dt">other_fields=</span><span class="st">&quot;category&quot;</span>) <span class="op">+</span></span>
-<span id="cb13-4"><a href="plotting-reduced-dimensions.html#cb13-4" aria-hidden="true"></a><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="st">&#39;category&#39;</span>)</span></code></pre></div>
+These fields are inserted into the <code>data.frame</code> and can be used in any <em><a href="https://CRAN.R-project.org/package=ggplot2">ggplot2</a></em>-compatible function.
+In Figure <a href="plotting-reduced-dimensions.html#fig:scater-tsne-color-cd3-facet">1.5</a>, we bin each cell based on its size factor to create the <code>category</code> field,
+and we use those bins for faceting the plot generated by <code>plotTSNE()</code>.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="plotting-reduced-dimensions.html#cb13-1"></a>sce<span class="op">$</span>category &lt;-<span class="st"> </span><span class="kw">cut</span>(<span class="kw">log</span>(<span class="kw">sizeFactors</span>(sce)), <span class="dv">3</span>)</span>
+<span id="cb13-2"><a href="plotting-reduced-dimensions.html#cb13-2"></a><span class="kw">plotTSNE</span>(sce, <span class="dt">colour_by=</span><span class="st">&quot;label&quot;</span>, <span class="dt">other_fields=</span><span class="st">&quot;category&quot;</span>) <span class="op">+</span></span>
+<span id="cb13-3"><a href="plotting-reduced-dimensions.html#cb13-3"></a><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="st">&#39;category&#39;</span>)</span></code></pre></div>
 <div class="figure"><span id="fig:scater-tsne-color-cd3-facet"></span>
 <img src="reduced-dimensions_files/figure-html/scater-tsne-color-cd3-facet-1.png" alt="$t$-SNE coloured by the cluster identity and faceted by the log-size factor after binning." width="960" />
 <p class="caption">
 Figure 1.5: <span class="math inline">\(t\)</span>-SNE coloured by the cluster identity and faceted by the log-size factor after binning.
 </p>
 </div>
+<p>While most customization can be performed by adding further <code>ggplot</code>-related layers,
+we can also tinker with other aesthetic parameters in the <code>plotTSNE()</code> call.
+For example, we change the point size and axis labels while also removing the legend in Figure <a href="#fig:scater-tsne-other"><strong>??</strong></a>.
+Further options can be found by following the breadcrumbs in the documentation for <code>?plotTSNE</code>.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="plotting-reduced-dimensions.html#cb14-1"></a><span class="kw">plotTSNE</span>(sce, <span class="dt">colour_by=</span><span class="st">&quot;label&quot;</span>, <span class="dt">point_size=</span><span class="fl">0.25</span>, <span class="dt">add_legend=</span><span class="ot">FALSE</span>, </span>
+<span id="cb14-2"><a href="plotting-reduced-dimensions.html#cb14-2"></a>    <span class="dt">label_format=</span><span class="st">&quot;%s dimension %i&quot;</span>)</span></code></pre></div>
+<p><img src="reduced-dimensions_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>I could go on, but I won’t.</p>
 </div>
 <div id="session-information" class="section level2 unnumbered">
@@ -346,18 +365,17 @@ Figure 1.5: <span class="math inline">\(t\)</span>-SNE coloured by the cluster i
 View session info
 </button>
 <div class="rebook-content">
-<pre><code>R version 4.0.0 Patched (2020-05-01 r78341)
+<pre><code>R version 4.0.2 Patched (2020-09-10 r79182)
 Platform: x86_64-pc-linux-gnu (64-bit)
-Running under: Ubuntu 18.04.5 LTS
+Running under: Ubuntu 20.04.1 LTS
 
 Matrix products: default
-BLAS:   /home/luna/Software/R/R-4-0-branch-dev/lib/libRblas.so
-LAPACK: /home/luna/Software/R/R-4-0-branch-dev/lib/libRlapack.so
+BLAS/LAPACK: /usr/lib/x86_64-linux-gnu/openblas-openmp/libopenblasp-r0.3.8.so
 
 locale:
  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
- [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=C             
  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
 [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
@@ -368,71 +386,69 @@ attached base packages:
 
 other attached packages:
  [1] bluster_0.99.1              scuttle_0.99.13            
- [3] scran_1.17.15               scater_1.17.4              
- [5] ggplot2_3.3.2               DropletUtils_1.9.10        
+ [3] scran_1.17.16               scater_1.17.4              
+ [5] ggplot2_3.3.2               DropletUtils_1.9.11        
  [7] SingleCellExperiment_1.11.6 SummarizedExperiment_1.19.6
  [9] DelayedArray_0.15.7         matrixStats_0.56.0         
-[11] Matrix_1.2-18               Biobase_2.49.0             
-[13] GenomicRanges_1.41.6        GenomeInfoDb_1.25.10       
+[11] Matrix_1.2-18               Biobase_2.49.1             
+[13] GenomicRanges_1.41.6        GenomeInfoDb_1.25.11       
 [15] IRanges_2.23.10             S4Vectors_0.27.12          
-[17] BiocGenerics_0.35.4         DropletTestFiles_0.99.0    
-[19] BiocStyle_2.17.0           
+[17] BiocGenerics_0.35.4         DropletTestFiles_0.99.5    
+[19] BiocStyle_2.17.0            BiocManager_1.30.10        
 
 loaded via a namespace (and not attached):
   [1] Rtsne_0.15                    ggbeeswarm_0.6.0             
   [3] colorspace_1.4-1              ellipsis_0.3.1               
   [5] XVector_0.29.3                BiocNeighbors_1.7.0          
-  [7] farver_2.0.3                  bit64_4.0.2                  
+  [7] farver_2.0.3                  bit64_4.0.5                  
   [9] RSpectra_0.16-0               interactiveDisplayBase_1.27.5
  [11] AnnotationDbi_1.51.3          codetools_0.2-16             
- [13] R.methodsS3_1.8.0             knitr_1.29                   
- [15] dbplyr_1.4.4                  R.oo_1.23.0                  
+ [13] R.methodsS3_1.8.1             knitr_1.29                   
+ [15] dbplyr_1.4.4                  R.oo_1.24.0                  
  [17] rebook_0.99.5                 graph_1.67.1                 
  [19] uwot_0.1.8                    shiny_1.5.0                  
- [21] HDF5Array_1.17.3              BiocManager_1.30.10          
- [23] compiler_4.0.0                httr_1.4.2                   
- [25] dqrng_0.2.1                   assertthat_0.2.1             
- [27] fastmap_1.0.1                 limma_3.45.10                
- [29] later_1.1.0.1                 BiocSingular_1.5.0           
- [31] htmltools_0.5.0               tools_4.0.0                  
- [33] rsvd_1.0.3                    igraph_1.2.5                 
- [35] gtable_0.3.0                  glue_1.4.1                   
- [37] GenomeInfoDbData_1.2.3        dplyr_1.0.2                  
- [39] rappdirs_0.3.1                Rcpp_1.0.5                   
- [41] vctrs_0.3.2                   rhdf5filters_1.1.2           
- [43] ExperimentHub_1.15.2          DelayedMatrixStats_1.11.1    
- [45] xfun_0.16                     stringr_1.4.0                
- [47] ps_1.3.4                      mime_0.9                     
- [49] lifecycle_0.2.0               irlba_2.3.3                  
- [51] statmod_1.4.34                XML_3.99-0.5                 
- [53] AnnotationHub_2.21.3          edgeR_3.31.4                 
- [55] zlibbioc_1.35.0               scales_1.1.1                 
- [57] promises_1.1.1                rhdf5_2.33.7                 
- [59] yaml_2.2.1                    curl_4.3                     
- [61] memoise_1.1.0                 gridExtra_2.3                
- [63] stringi_1.4.6                 RSQLite_2.2.0                
- [65] highr_0.8                     BiocVersion_3.12.0           
- [67] filelock_1.0.2                BiocParallel_1.23.2          
- [69] rlang_0.4.7                   pkgconfig_2.0.3              
- [71] bitops_1.0-6                  evaluate_0.14                
- [73] lattice_0.20-41               purrr_0.3.4                  
- [75] Rhdf5lib_1.11.3               labeling_0.3                 
- [77] CodeDepends_0.6.5             cowplot_1.0.0                
- [79] bit_4.0.4                     processx_3.4.3               
- [81] tidyselect_1.1.0              RcppAnnoy_0.0.16             
- [83] magrittr_1.5                  bookdown_0.20                
- [85] R6_2.4.1                      generics_0.0.2               
- [87] DBI_1.1.0                     pillar_1.4.6                 
- [89] withr_2.2.0                   RCurl_1.98-1.2               
- [91] tibble_3.0.3                  crayon_1.3.4                 
- [93] BiocFileCache_1.13.1          rmarkdown_2.3                
- [95] viridis_0.5.1                 locfit_1.5-9.4               
- [97] grid_4.0.0                    blob_1.2.1                   
- [99] callr_3.4.3                   digest_0.6.25                
-[101] xtable_1.8-4                  httpuv_1.5.4                 
-[103] R.utils_2.9.2                 munsell_0.5.0                
-[105] beeswarm_0.2.3                viridisLite_0.3.0            
-[107] vipor_0.4.5                  </code></pre>
+ [21] HDF5Array_1.17.3              compiler_4.0.2               
+ [23] httr_1.4.2                    dqrng_0.2.1                  
+ [25] assertthat_0.2.1              fastmap_1.0.1                
+ [27] limma_3.45.14                 later_1.1.0.1                
+ [29] BiocSingular_1.5.0            htmltools_0.5.0              
+ [31] tools_4.0.2                   rsvd_1.0.3                   
+ [33] igraph_1.2.5                  gtable_0.3.0                 
+ [35] glue_1.4.2                    GenomeInfoDbData_1.2.3       
+ [37] dplyr_1.0.2                   rappdirs_0.3.1               
+ [39] Rcpp_1.0.5                    vctrs_0.3.4                  
+ [41] rhdf5filters_1.1.2            ExperimentHub_1.15.3         
+ [43] DelayedMatrixStats_1.11.1     xfun_0.17                    
+ [45] stringr_1.4.0                 ps_1.3.4                     
+ [47] mime_0.9                      lifecycle_0.2.0              
+ [49] irlba_2.3.3                   statmod_1.4.34               
+ [51] XML_3.99-0.5                  AnnotationHub_2.21.5         
+ [53] edgeR_3.31.4                  zlibbioc_1.35.0              
+ [55] scales_1.1.1                  promises_1.1.1               
+ [57] rhdf5_2.33.7                  yaml_2.2.1                   
+ [59] curl_4.3                      memoise_1.1.0                
+ [61] gridExtra_2.3                 stringi_1.5.3                
+ [63] RSQLite_2.2.0                 highr_0.8                    
+ [65] BiocVersion_3.12.0            BiocParallel_1.23.2          
+ [67] rlang_0.4.7                   pkgconfig_2.0.3              
+ [69] bitops_1.0-6                  evaluate_0.14                
+ [71] lattice_0.20-41               purrr_0.3.4                  
+ [73] Rhdf5lib_1.11.3               labeling_0.3                 
+ [75] CodeDepends_0.6.5             bit_4.0.4                    
+ [77] processx_3.4.4                tidyselect_1.1.0             
+ [79] RcppAnnoy_0.0.16              magrittr_1.5                 
+ [81] bookdown_0.20                 R6_2.4.1                     
+ [83] generics_0.0.2                DBI_1.1.0                    
+ [85] pillar_1.4.6                  withr_2.2.0                  
+ [87] RCurl_1.98-1.2                tibble_3.0.3                 
+ [89] crayon_1.3.4                  BiocFileCache_1.13.1         
+ [91] rmarkdown_2.3                 viridis_0.5.1                
+ [93] locfit_1.5-9.4                grid_4.0.2                   
+ [95] blob_1.2.1                    callr_3.4.4                  
+ [97] digest_0.6.25                 xtable_1.8-4                 
+ [99] httpuv_1.5.4                  R.utils_2.10.1               
+[101] munsell_0.5.0                 beeswarm_0.2.3               
+[103] viridisLite_0.3.0             vipor_0.4.5                  </code></pre>
 </div>
 
 </div>
@@ -455,7 +471,7 @@ loaded via a namespace (and not attached):
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="bibliography.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="plotting-gene-expression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
