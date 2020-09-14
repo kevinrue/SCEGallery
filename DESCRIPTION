@@ -10,3 +10,14 @@ Description:
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
+Imports: BiocStyle,
+    bluster,
+    DropletTestFiles,
+    DropletUtils,
+    ggplot2,
+    knitr,
+    rebook,
+    scater,
+    scran,
+    scRNAseq,
+    scuttle
