@@ -10,7 +10,7 @@ name: bookdown
 
 jobs:
   compile:
-    runs-on: ubuntu
+    runs-on: ubuntu-latest
     container: bioconductor/bioconductor_docker:devel
 
     env:
@@ -26,10 +26,11 @@ jobs:
       - name: Installing rebook
         run: |
           BiocManager::install("rebook")
+        shell: Rscript {0}
 
       - name: Update DESCRIPTION
         run: |
-          rebook::updateDependencies(".")
+            rebook::updateDependencies(".")
         shell: Rscript {0}
 
       - name: Committing updates to master
