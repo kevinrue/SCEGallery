@@ -30,7 +30,7 @@ jobs:
 
       - name: Update DESCRIPTION
         run: |
-            rebook::updateDependencies(".")
+            rebook::updateDependencies(".", extra=c("Rtsne", "uwot"))
         shell: Rscript {0}
 
       - name: Committing updates to master
