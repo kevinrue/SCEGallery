@@ -17,7 +17,9 @@ Imports: BiocStyle,
     ggplot2,
     knitr,
     rebook,
+    Rtsne,
     scater,
     scran,
     scRNAseq,
-    scuttle
+    scuttle,
+    uwot
