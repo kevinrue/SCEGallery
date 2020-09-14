@@ -57,7 +57,7 @@ jobs:
       - name: Cache R packages
         uses: actions/cache@v1
         with:
-          path: ${{ env.R_LIBS_USER }}
+          path: aaron-wuz-here
           key: ${{ runner.os }}-${{ hashFiles('depends.Rds') }}
           restore-keys: ${{ runner.os }}-
 
