@@ -11,7 +11,7 @@ Don't like one visualization? That's okay, just use another option - and here's 
 
 The repository holds contents for a [**bookdown**](https://bookdown.org/yihui/bookdown/) book.
 Each chapter describes a different aspect of data visualization, e.g., using the `reducedDims()` or the feature assay values.
-Each section of the chapter corresponds to the functionality offered by a single Bioconductor package; all functions will usually operating on the same `SingleCellExperiment` object for a like-for-like comparison.
+Each section of the chapter corresponds to the functionality offered by a single Bioconductor package; all functions will usually operate on the same `SingleCellExperiment` object for a like-for-like comparison.
 
 Think you can do better? 
 Make a PR on this repository in the relevant chapter (or make your own, if you see a visualization mode that is not covered here).
